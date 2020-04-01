@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter
-@MappedSuperclass   // 이 클래스를 상속한 엔티티들은 이 클래스의 필드도 컬럼으로 인식한다.
+@MappedSuperclass                               // 이 클래스를 상속한 엔티티들은 이 클래스의 필드도 컬럼으로 인식한다.
 @EntityListeners(AuditingEntityListener.class)  // 이 클래스에 Auditing 기능을 포함시킨다.
 public class BaseTimeEntity {
 
