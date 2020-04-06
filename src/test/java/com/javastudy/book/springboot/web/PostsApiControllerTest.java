@@ -4,7 +4,6 @@ import com.javastudy.book.springboot.domain.posts.Posts;
 import com.javastudy.book.springboot.domain.posts.PostsRepository;
 import com.javastudy.book.springboot.web.dto.PostsSaveRequestDto;
 import com.javastudy.book.springboot.web.dto.PostsUpdateRequestDto;
-import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
