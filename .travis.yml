@@ -15,6 +15,23 @@ script: "./gradlew clean build"
 before_install:
   - chmod +x gradlew
 
+# Code Deploy 는 jar 파일을 인식하지 못하므로 jar 혹은 기타 파일을 모아 압축
+before_deploy:
+  - zip -r freelec-springboot2-webservice *
+  - mkdir -p deploy
+  - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY      # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY  # Travis repo settings에 설정된 값
+    bucket: yjsdev-springboot-build     # S3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private        # zip 파일 접근을 private 로
+    local_dir: deploy   # before_deploy 에서 생성한 디렉토리 (이 위치에 있는 파일만 S3 로 전송)
+    wait-until-deployed: true
+
 # CI 실행 완료시 메일로 알람
 notifications:
   email:
